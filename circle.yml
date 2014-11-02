@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker pull million12/php-app:latest
+
+# Run tests
+test:
+  pre:
+    - docker build -t million12/behat-selenium .
+
+  override:
+    - docker run -d million12/behat-selenium
