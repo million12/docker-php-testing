@@ -11,7 +11,7 @@ Note: this container does not actually contain Behat installed. Presumably it's 
 
 Here is an example how you can run your test. In the example we are running TYPO3 Neos tests, unit, functional and Behat altogether.
 
-First, prepare you application:  
+First, launch your complete application:  
 ```
 docker run -d --name=db --env="MARIADB_PASS=my-pass" tutum/mariadb
 docker run -d --name=neos -p=8080:80 --link=db:db \
@@ -23,7 +23,7 @@ docker run -d --name=neos -p=8080:80 --link=db:db \
 
 Now, having your application running in `neos` container, application data in /data/www/neos, here's how you can run tests against it:
 ```
-docker run -ti --volumes-from=neos --link=neos:web --link=db:db -p= million12/behat-selenium "
+docker run -ti --volumes-from=neos --link=neos:web --link=db:db -p=4444:4444 -p=5900:5900 million12/behat-selenium "
     echo \$WEB_PORT_80_TCP_ADDR \$WEB_ENV_NEOS_APP_VHOST_NAMES >> /etc/hosts && cat /etc/hosts && \
     su www -c \"
         cd /data/www/neos && \
@@ -37,6 +37,7 @@ docker run -ti --volumes-from=neos --link=neos:web --link=db:db -p= million12/be
 
 Have a look at [million12/typo3-neos](https://github.com/million12/docker-typo3-neos) repository for a complete example. Tests there are described in [circle.yml](https://github.com/million12/docker-typo3-neos/blob/master/circle.yml) and are running on [CircleCI](https://circleci.com/gh/million12/docker-typo3-neos).
 
+Note: port 4444 allows you to connect with the browser to Selenium server. Port 5900 allows to connect to VNC server (with VNC client) and see how the tests are executed in the Selenium browser.
 
 ## Authors
 
