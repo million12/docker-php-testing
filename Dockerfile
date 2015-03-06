@@ -1,4 +1,4 @@
-FROM million12/php-app:latest
+FROM million12/nginx-php:latest
 MAINTAINER Marcin Ryzycki marcin@m12.io
 
 # Install java, Xvfb, x11vnc server and firefox
@@ -14,7 +14,8 @@ RUN \
 
 ADD container-files /
 
-ENV SCREEN_DIMENSION 1600x1000x24
-ENV VNC_PASSWORD password
+ENV \
+  SCREEN_DIMENSION=1600x1000x24 \
+  VNC_PASSWORD=password
 
 EXPOSE 4444 5900
