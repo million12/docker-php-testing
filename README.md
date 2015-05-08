@@ -1,15 +1,15 @@
 # Docker with Selenium for Behat testing
-[![Circle CI](https://circleci.com/gh/million12/docker-behat-selenium.png?style=badge)](https://circleci.com/gh/million12/docker-behat-selenium)
+[![Circle CI](https://circleci.com/gh/million12/docker-php-testing.png?style=badge)](https://circleci.com/gh/million12/docker-php-testing)
 
-This is a [million12/behat-selenium](https://registry.hub.docker.com/u/million12/behat-selenium/) container for running [Behat](http://behat.org/) tests. Selenium server is installed and running, also there is a VNC server so you can connect to it to inspect the browser while tests are running.
+This is a [million12/php-testing](https://registry.hub.docker.com/u/million12/php-testing) container for running PHP tests using phpunit and/or [Behat](http://behat.org/) tests. Selenium server is installed and running, also there is a VNC server so you can connect to it to inspect the browser while tests are running.
 
-This container is based on container with PHP, [million12/nginx-php](https://github.com/million12/docker-nginx-php). If you use the same one for you application, you have exactly the same environment for the application and your test. That gives you consistent results and guarantee that if your test are passing, your app is working.
+This container is based on the PHP container, [million12/nginx-php](https://github.com/million12/docker-nginx-php). If you use it for you application, you have exactly the same environment for the application and for testing. That gives you consistent results and a guarantee that if your test are passing, your app is working.
 
 Note: this container does not actually contain Behat installed. Presumably it is available in your application's directory (and some specific version of it). Same applies for phpunit. If that's not the case, there's a composer tool so you can easily install it.
 
 ## Usage
 
-Here is an example how you can run your Behat test. In the example we are running TYPO3 Neos tests, unit, functional and Behat altogether.
+Here is an example how you can run your unit, functional and Behat test. In the example we are running TYPO3 Neos tests: unit, functional and Behat altogether.
 
 First, launch containers with TYPO3 Neos (we use [million12/typo3-neos](https://github.com/million12/docker-typo3-neos) image for that):  
 ```
@@ -22,7 +22,7 @@ docker run -d --name=neos -p=12345:80 --link=db:db \
 
 Now, having your application running in `neos` container, application data in /data/www/neos, here's how you can run tests against it:
 ```
-docker run -ti --volumes-from=neos --link=neos:web --link=db:db -p=4444:4444 -p=5900:5900 million12/behat-selenium "
+docker run -ti --volumes-from=neos --link=neos:web --link=db:db -p=4444:4444 -p=5900:5900 million12/php-testing "
     echo \$WEB_PORT_80_TCP_ADDR \$WEB_ENV_T3APP_VHOST_NAMES >> /etc/hosts && cat /etc/hosts && \
     su www -c \"
         cd /data/www/typo3-app && \

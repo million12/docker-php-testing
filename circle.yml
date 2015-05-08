@@ -4,9 +4,9 @@ machine:
 
 dependencies:
   override:
-    - docker build -t million12/behat-selenium .
+    - docker build -t million12/php-testing .
 
 # Run tests
 test:
   override:
-    - docker run -d million12/behat-selenium
+    - docker run -d million12/php-testing
