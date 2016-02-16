@@ -1,4 +1,4 @@
-FROM million12/nginx-php:php56
+FROM million12/nginx-php:latest
 MAINTAINER Marcin Ryzycki marcin@m12.io
 
 # Install java, Xvfb, x11vnc server and firefox
