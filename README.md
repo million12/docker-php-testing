@@ -1,11 +1,17 @@
-# Docker with Selenium for Behat testing
+# Docker container with PHP and Selenium server
 [![Circle CI](https://circleci.com/gh/million12/docker-php-testing.png?style=badge)](https://circleci.com/gh/million12/docker-php-testing)
 
 This is a [million12/php-testing](https://registry.hub.docker.com/u/million12/php-testing) container for running PHP tests using phpunit and/or [Behat](http://behat.org/) tests. Selenium server is installed and running, also there is a VNC server so you can connect to it to inspect the browser while tests are running.
 
-This container is based on the PHP container, [million12/nginx-php](https://github.com/million12/docker-nginx-php). If you use it for you application, you have exactly the same environment for the application and for testing. That gives you consistent results and a guarantee that if your test are passing, your app is working.
+This container is based on the [million12/nginx-php](https://github.com/million12/docker-nginx-php) container. If you use it for you application, you have exactly the same environment for the application and for testing. That gives you consistent results and a guarantee that if your test are passing, your app is working.
 
-Note: this container does not actually contain Behat installed. Presumably it is available in your application's directory (and some specific version of it). Same applies for phpunit. If that's not the case, there's a composer tool so you can easily install it.
+For different PHP versions, look up different branches of this repository.  
+On Docker Hub you can find them under different tags:  
+* `million12/php-testing:latest` - PHP 7.0 # built from `master` branch [![Circle CI](https://circleci.com/gh/million12/docker-php-testing.svg?style=svg)](https://circleci.com/gh/million12/docker-php-testing)
+* `million12/php-testing:php70` - PHP 7.0 # built from `php70` branch [![Circle CI](https://circleci.com/gh/million12/docker-php-testing/tree/php70.svg?style=svg)](https://circleci.com/gh/million12/docker-php-testing/tree/php70)
+* `million12/php-testing:php56` - PHP 5.6 # built from `php56` branch [![Circle CI](https://circleci.com/gh/million12/docker-php-testing/tree/php56.svg?style=svg)](https://circleci.com/gh/million12/docker-php-testing/tree/php56)
+* `million12/php-testing:php55` - PHP 5.5 # built from `php55` branch [![Circle CI](https://circleci.com/gh/million12/docker-php-testing/tree/php55.svg?style=svg)](https://circleci.com/gh/million12/docker-php-testing/tree/php55)
+
 
 ## Usage
 
@@ -44,4 +50,4 @@ Author: Marcin Ryzycki (<marcin@m12.io>)
 
 ---
 
-**Sponsored by** [Typostrap.io - the new prototyping tool](http://typostrap.io/) for building highly-interactive prototypes of your website or web app. Built on top of TYPO3 Neos CMS and Zurb Foundation framework.
+**Sponsored by [Prototype Brewery](http://prototypebrewery.io/)** - the new prototyping tool for building highly-interactive prototypes of your website or web app. Built on top of [Neos CMS](https://www.neos.io/) and [Zurb Foundation](http://foundation.zurb.com/) framework.
