@@ -9,7 +9,7 @@ RUN \
   yum update -y && \
   yum install -y java-1.8.0-openjdk-headless xorg-x11-server-Xvfb x11vnc firefox && \
   yum clean all && \
-  curl -sSL -o /usr/bin/selenium-server-standalone.jar http://selenium-release.storage.googleapis.com/2.52/selenium-server-standalone-2.52.0.jar && \
+  curl -sSL -o /usr/bin/selenium-server-standalone.jar http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar && \
   rm -f /etc/supervisor.d/nginx.conf /etc/supervisor.d/php-fpm.conf
 
 ADD container-files /
